@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tunes</title>
+    <style>
+        body { font-family: Arial, Helvetica, sans-serif;font-size: 26px;background-color: #f9f9f9; }
+        h2 { text-align: center; margin-top: 50px; }
+        button {
+            background-color: #04AA6D; 
+	    font-size: 17px;
+            color: white; 
+            padding: 15px 20px; 
+            border: none; 
+            cursor: pointer; 
+            width: 50%; 
+            margin: 30px auto; 
+            display: block;
+        }
+        button:hover { opacity: 0.9; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: red; cursor: pointer; }
+    </style>
+</head>
+<body>
+<img src="logo 1.jpg" alt="Mood Tunes Logo" style="display: block; margin: 50px auto; width: 200px;height: 200px;
+	border : 2px solid #111211;
+	border-radius: 30px;">
+
+<h2>Welcome to Mood Tunes</h2>
+
+<button onclick="document.getElementById('signupModal').style.display='block'">Sign Up</button>
+<button onclick="document.getElementById('loginModal').style.display='block'">Log In</button>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span onclick="document.getElementById('signupModal').style.display='none'" class="close">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="signupForm" action="/signup" method="post">
+            <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <div class="error" id="passwordError"></div>
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>By creating an account you agree to our 
+        <a href="#" style="color:dodgerblue" onclick="document.getElementById('termsModal').style.display='block'">Terms & Conditions</a> and 
+        <a href="#" style="color:dodgerblue" onclick="document.getElementById('privacyModal').style.display='block'">Privacy Policy</a>.
+      </p>
+
+      <div class="clearfix">
+        
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Terms and Conditions Modal -->
+<div id="termsModal" class="modal terms-modal">
+  <span onclick="document.getElementById('termsModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <div class="modal-content">
+    <div class="container">
+      <h2>Terms and Conditions for Mood Tunes</h2>
+      <p>Welcome to Mood Tunes! These terms and conditions outline the rules and regulations for the use of the Mood Tunes website("Website").</p>
+      <p>By accessing or using this Website, we assume you accept these terms and conditions. Do not continue to use Mood Tunes if you do not agree to all of the terms and conditions stated on this page.</p>
+      
+      <h3>1. License to Use</h3>
+      <p>1.1. Mood Tunes grants you a non-exclusive, non-transferable, limited license to use the Website for personal, non-commercial purposes only.</p>
+      <p>1.2. You must be at least 13 years old to use the Website. By using the Website, you warrant that you are at least 13 years of age.</p>
+
+      <h3>2. Music Suggestions</h3>
+      <p>2.1. Mood Tunes uses facial recognition and music genre classification algorithms to suggest music based on the user's facial expressions and perceived mood.</p>
+      <p>2.2. While we strive to provide accurate music suggestions, Mood Tunes does not guarantee the accuracy, reliability, or effectiveness of its music recommendations.</p>
+
+      <h3>3. Privacy and Data Usage</h3>
+      <p>3.1. Mood Tunes may collect and store personal data, including but not limited to facial images and music preferences, to improve user experience and service quality.</p>
+      <p>3.2. Your privacy is important to us. Mood Tunes will not sell, trade, or otherwise transfer your personal data to third parties without your consent, except as required by law.</p>
+      <p>3.3. For detailed information on how we collect, use, and protect your data, please refer to our Privacy Policy.</p>
+
+      <h3>4. User Responsibilities</h3>
+      <p>4.1. You are responsible for maintaining the confidentiality of your Mood Tunes account and for all activities that occur under your account.</p>
+      <p>4.2. You agree not to use Mood Tunes for any unlawful purpose or in a way that infringes upon the rights of others.</p>
+      <p>4.3. You agree not to interfere with or disrupt the Website's operations, servers, or networks connected to the Website.</p>
+
+      <h3>5. Limitation of Liability</h3>
+      <p>5.1. Mood Tunes and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or use, arising out of or in connection with your use of the Website.</p>
+      <p>5.2. Mood Tunes does not warrant that the Website will be uninterrupted, timely, secure, or error-free.</p>
+
+      <h3>6. Changes to Terms and Conditions</h3>
+      <p>6.1. Mood Tunes reserves the right to modify these terms and conditions at any time. Updated terms will be posted within the Website, and your continued use of Mood Tunes after any such changes constitutes your acceptance of the new terms.</p>
+
+      <h3>7. Governing Law</h3>
+      <p>7.1. These terms and conditions shall be governed by and construed in accordance with the laws of India, and any disputes arising under these terms shall be subject to the exclusive jurisdiction of the courts located in Chennai, Tamil Nadu.</p>
+
+      <h3>8. Contact Us</h3>
+      <p>8.1. If you have any questions about these terms and conditions, please contact us at <strong>Email:</strong> <a href="mailto:doxbot88888@gmail.com">doxbot88888@gmail.com</a></p>
+
+      <button type="button" onclick="document.getElementById('termsModal').style.display='none'" class="cancelbtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="modal terms-modal">
+  <span onclick="document.getElementById('privacyModal').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <div class="modal-content">
+    <div class="container">
+      <h2>Privacy Policy for Mood Tunes</h2>
+ 
+      <p>Welcome to Mood Tunes! This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website and use our services. By accessing or using our website, you agree to the practices outlined in this policy.</p>
+
+      <h3>1. Information We Collect</h3>
+      <p>1.1 <strong>Personal Data</strong><br>
+      We may collect personal information that you provide to us, including but not limited to:
+      <ul>
+        <li>Email address</li>
+        <li>Facial images (if applicable)</li>
+        <li>Music preferences</li>
+        <li>Any other information you choose to submit</li>
+      </ul>
+      </p>
+      <p>1.2 <strong>Usage Data</strong><br>
+      We may collect information about how you access and use our website, including:
+      <ul>
+        <li>Your IP address</li>
+        <li>Browser type and version</li>
+        <li>Pages you visit on our website</li>
+        <li>Time and date of your visits</li>
+        <li>Time spent on those pages</li>
+        <li>Other diagnostic data</li>
+      </ul>
+      </p>
+
+      <h3>2. Use of Your Information</h3>
+      <p>We use the collected information for various purposes, including:
+      <ul>
+        <li>To provide and maintain our website</li>
+        <li>To notify you about changes to our services</li>
+        <li>To allow you to engage in interactive features when you choose to do so</li>
+        <li>To provide customer support</li>
+        <li>To gather analysis or valuable information to improve our website</li>
+        <li>To monitor the usage of our services</li>
+        <li>To detect, prevent, and address technical issues</li>
+      </ul>
+      </p>
+
+      <h3>3. Data Storage and Security</h3>
+      <p>3.1 <strong>Data Retention</strong><br>
+      We will retain your personal data only as long as necessary for the purposes outlined in this Privacy Policy.</p>
+      <p>3.2 <strong>Data Security</strong><br>
+      The security of your data is important to us. While we strive to protect your personal information, no method of transmission over the internet or electronic storage is 100% secure. Therefore, we cannot guarantee its absolute security.</p>
+
+      <h3>4. Sharing Your Information</h3>
+      <p>We do not sell, trade, or otherwise transfer your personal data to third parties without your consent, except as required by law. We may share your information with:
+      <ul>
+        <li>Service providers who assist us in operating our website</li>
+        <li>Legal authorities if required by law</li>
+      </ul>
+      </p>
+
+      <h3>5. Your Rights</h3>
+      <p>You have the right to:
+      <ul>
+        <li>Access your personal data</li>
+        <li>Request correction of your personal data</li>
+        <li>Request deletion of your personal data</li>
+        <li>Object to or restrict the processing of your personal data</li>
+      </ul>
+      </p>
+
+      <h3>6. Changes to This Privacy Policy</h3>
+      <p>We may update our Privacy Policy periodically. We will notify you of any changes by posting the new Privacy Policy on this page. Your continued use of our website after any modifications will constitute your acknowledgment of the changes and your consent to abide by and be bound by the modified policy.</p>
+
+      <h3>7. Governing Law</h3>
+      <p>This Privacy Policy shall be governed by and construed in accordance with the laws of India. Any disputes arising under this Privacy Policy shall be subject to the exclusive jurisdiction of the courts located in Chennai, Tamil Nadu.</p>
+
+      <h3>8. Contact Us</h3>
+      <p>If you have any questions about this Privacy Policy, please contact us at <strong>Email:</strong> <a href="mailto:doxbot88888@gmail.com">doxbot88888@gmail.com</a></p>
+      
+
+      <button type="button" onclick="document.getElementById('privacyModal').style.display='none'" class="cancelbtn">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span onclick="document.getElementById('loginModal').style.display='none'" class="close">&times;</span>
+        <h2>Log In</h2>
+        <form id="loginForm" action="/login" method="post">
+            <label for="email">Email:</label>
+            <input type="text" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+// Close modals when clicking outside of them
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('loginModal')) {
+            document.getElementById('loginModal').style.display = "none";
+        } else if (event.target === document.getElementById('signupModal')) {
+            document.getElementById('signupModal').style.display = "none";
+        }
+    };
+
+   
+
+    // Handle sign-up form submission
+    document.getElementById('signupForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevent actual submission
+        // Redirect to the success page
+        window.location.href = 'signup-success.html';
+    };
+
+    // Handle login form submission
+    document.getElementById('loginForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevent actual submission
+        document.getElementById('loginModal').style.display = 'none'; // Hide modal
+        // Redirect to the success page
+        window.location.href = 'options1.html';
+
+    };
+</script>
+</body>
+</html>

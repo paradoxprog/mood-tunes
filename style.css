@@ -1,0 +1,51 @@
+body{
+	text-align: center;
+}
+
+
+h1{
+	font-family:  fantasy;
+	color: #289672;
+}
+.title{
+	margin-top: 20px;
+}
+input[type="radio"]{
+	display: none;
+}
+.box{
+	background-color: #edffec;
+	height: 170px;
+	width: 300px;
+	padding: 30px;
+	text-align:match-parent;
+	font-size: 25px;
+	font-family: fantasy;
+	line-height: 50px;
+	margin: 10px 10px;
+	border: 2px solid #070707;
+	border-radius: 10%;
+
+}
+.box:hover{
+	background-color: #a199b9;
+	transition-duration: 1s;
+}
+
+input[type=radio]:checked + .box{
+	background-color: ##ddffbc;
+	color: rgb(10, 9, 9);
+	transition-duration: 1s;
+}
+.btn{
+	width: 300px;
+	height: 50px;
+	}
+
+img{
+	margin-top: 50px;
+	width: 200px;
+	height: 200px;
+	border : 2px solid #111211;
+	border-radius: 30px;
+}
